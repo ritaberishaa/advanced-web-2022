@@ -19,4 +19,12 @@ public class CreateParkingSlotsRequestDto {
     public void setNumberOfSlots(Integer numberOfSlots) { this.numberOfSlots = numberOfSlots;
     }
 
+    @JsonProperty("isHandicap")
+    public Boolean isHandicap(){
+        return isHandicap;
+    }
+
+    public void setHandicap(Boolean handicap) {
+        isHandicap = handicap;
+    }
 }
