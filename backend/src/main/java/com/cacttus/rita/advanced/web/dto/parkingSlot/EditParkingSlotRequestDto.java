@@ -1,5 +1,7 @@
 package com.cacttus.rita.advanced.web.dto.parkingSlot;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class EditParkingSlotRequestDto {
     private Long parkingZoneId;
     private Boolean isHandicap;
@@ -19,5 +21,13 @@ public class EditParkingSlotRequestDto {
 
     public void setFree(Boolean free) {
         isFree = free;
+    }
+    @JsonProperty("isHandicap")
+    public Boolean isHandicap() {
+        return isHandicap;
+    }
+    @JsonProperty("isFree")
+    public Boolean isFree() {
+        return isFree;
     }
 }
