@@ -14,6 +14,7 @@ public class CityService {
     public CityService(CityRepository cityRepository) { this.cityRepository = cityRepository; }
 
     public List<City> getAllCities() { return cityRepository.findAll(); }
+
     public City getCityWithId(Long id) throws CityWithIdDoesNotExistException {
         Optional<City> city = cityRepository.findById(id);
         if (city.isEmpty())

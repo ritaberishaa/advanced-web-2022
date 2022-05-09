@@ -91,7 +91,7 @@ public class ParkingZone {
     }
 
     @JsonIgnore
-    public Boolean getActive() {
+    public Boolean isActive() {
         return isActive;
     }
 

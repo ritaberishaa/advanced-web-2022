@@ -15,19 +15,22 @@ public class EditParkingSlotRequestDto {
         this.parkingZoneId = parkingZoneId;
     }
 
+    @JsonProperty("isHandicap")
+    public Boolean isHandicap() {
+        return isHandicap;
+    }
+
     public void setHandicap(Boolean handicap) {
         isHandicap = handicap;
+    }
+
+    @JsonProperty("isFree")
+    public Boolean isFree() {
+        return isFree;
     }
 
     public void setFree(Boolean free) {
         isFree = free;
     }
-    @JsonProperty("isHandicap")
-    public Boolean isHandicap() {
-        return isHandicap;
-    }
-    @JsonProperty("isFree")
-    public Boolean isFree() {
-        return isFree;
-    }
+
 }

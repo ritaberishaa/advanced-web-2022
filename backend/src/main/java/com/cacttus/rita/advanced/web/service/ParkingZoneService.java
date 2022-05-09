@@ -7,10 +7,12 @@ import com.cacttus.rita.advanced.web.model.City;
 import com.cacttus.rita.advanced.web.model.ParkingZone;
 import com.cacttus.rita.advanced.web.repository.CityRepository;
 import com.cacttus.rita.advanced.web.repository.ParkingZoneRepository;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class ParkingZoneService {
     private final CityRepository cityRepository;
     private final ParkingZoneRepository parkingZoneRepository;
