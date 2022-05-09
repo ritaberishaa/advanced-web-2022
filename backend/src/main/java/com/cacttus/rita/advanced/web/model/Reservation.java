@@ -40,6 +40,10 @@ public class Reservation {
         this.user = user;
     }
 
+    public User getUser() {
+        return user;
+    }
+
     public ParkingSlot getParkingSlot(){
         return parkingSlot;
     }
