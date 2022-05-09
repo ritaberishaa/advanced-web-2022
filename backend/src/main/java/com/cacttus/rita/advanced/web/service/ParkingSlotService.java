@@ -3,6 +3,7 @@ package com.cacttus.rita.advanced.web.service;
 import com.cacttus.rita.advanced.web.dto.parkingSlot.CreateParkingSlotsRequestDto;
 import com.cacttus.rita.advanced.web.dto.parkingSlot.EditParkingSlotRequestDto;
 import com.cacttus.rita.advanced.web.dto.parkingSlot.ParkingSlotDto;
+import com.cacttus.rita.advanced.web.exception.DateTimeException;
 import com.cacttus.rita.advanced.web.exception.ParkingSlotWithIdDoesNotExistException;
 import com.cacttus.rita.advanced.web.exception.ParkingZoneWithIdDoesNotExistException;
 import com.cacttus.rita.advanced.web.model.ParkingSlot;
@@ -11,6 +12,7 @@ import com.cacttus.rita.advanced.web.repository.ParkingSlotRepository;
 import com.cacttus.rita.advanced.web.repository.ParkingZoneRepository;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -100,6 +102,23 @@ public class ParkingSlotService {
             throw new ParkingZoneWithIdDoesNotExistException(zoneId);
 
         return parkingSlotRepository.getAllSlotsAtZone(zoneId);
+    }
+    public List<ParkingSlotDto> getFreeSlots(LocalDateTime fromTime, LocalDateTime toTime, Boolean isHandicap, Long zoneId, Long cityId) throws DateTimeException {
+        if(fromTime.isAfter(toTime))
+            throw new DateTimeException();
+
+        if(isHandicap == null)
+            isHandicap = false;
+
+        if(zoneId != null){
+            return parkingSlotRepository.getAllByZoneId(zoneId, isHandicap);
+        }
+        else if(cityId != null){
+            return parkingSlotRepository.getAllByCityId(cityId, isHandicap);
+        }
+        else{
+            return parkingSlotRepository.getAllByHandicap(isHandicap);
+        }
     }
 }
 

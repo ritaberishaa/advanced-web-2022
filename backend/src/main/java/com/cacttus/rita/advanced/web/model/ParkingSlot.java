@@ -45,7 +45,7 @@ public class ParkingSlot {
     public void setActive(Boolean active) { isActive = active; }
 
     @JsonIgnore
-    @OneToMany(mappedBy = "parkingSlot")
+    @OneToMany(mappedBy = "parkingSlot", cascade = CascadeType.ALL)
     private List<Reservation> reservations;
 
     public List<Reservation> getReservations() {

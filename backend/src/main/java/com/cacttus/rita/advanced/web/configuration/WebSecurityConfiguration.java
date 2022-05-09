@@ -52,9 +52,16 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable()
                 .authorizeRequests().antMatchers("/api/auth/login", "/api/auth/register","/api/docs/**").permitAll().
+                antMatchers(HttpMethod.GET, "/api/zone/*", "/api/zone/*/slots").permitAll().
                 antMatchers(HttpMethod.POST, "/api/zone").hasAuthority("ADMIN").
                 antMatchers(HttpMethod.PUT, "/api/zone/**").hasAuthority("ADMIN").
                 antMatchers(HttpMethod.DELETE, "/api/zone/**").hasAuthority("ADMIN").
+                antMatchers(HttpMethod.GET, "/api/slot/*", "/api/slot").permitAll().
+                antMatchers(HttpMethod.POST, "/api/slot").hasAuthority("ADMIN").
+                antMatchers(HttpMethod.PUT, "/api/slot/**").hasAuthority("ADMIN").
+                antMatchers(HttpMethod.DELETE, "/api/slot/**").hasAuthority("ADMIN").
+                antMatchers(HttpMethod.GET, "/api/city/*").permitAll().
+
                 anyRequest().authenticated().and().exceptionHandling().authenticationEntryPoint(jwtAuthEntryPoint).
                 and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
