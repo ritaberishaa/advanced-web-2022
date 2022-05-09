@@ -51,7 +51,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
         httpSecurity.csrf().disable()
-                .authorizeRequests().antMatchers("/api/auth/login", "/api/auth/register").permitAll().
+                .authorizeRequests().antMatchers("/api/auth/login", "/api/auth/register","/api/docs/**").permitAll().
                 antMatchers(HttpMethod.POST, "/api/zone").hasAuthority("ADMIN").
                 antMatchers(HttpMethod.PUT, "/api/zone/**").hasAuthority("ADMIN").
                 antMatchers(HttpMethod.DELETE, "/api/zone/**").hasAuthority("ADMIN").
